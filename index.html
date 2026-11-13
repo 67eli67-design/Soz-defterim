@@ -1,168 +1,753 @@
+
 <!DOCTYPE html>
 <html lang="az">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Söz dəftərim</title>
-<meta name="theme-color" content="#667eea">
-<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,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">
-<link rel="apple-touch-icon" sizes="192x192" href="data:image/png;base64,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">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI',system-ui,sans-serif;background:linear-gradient(135deg,#667eea,#764ba2);min-height:100vh;display:flex;justify-content:center;padding:24px 12px}
-.app{background:#fff;border-radius:16px;width:100%;max-width:480px;padding:24px;box-shadow:0 10px 40px rgba(0,0,0,.25)}
-h1{font-size:22px;color:#333;margin-bottom:4px}
-.sub{color:#888;font-size:13px;margin-bottom:18px}
-.tabs{display:flex;gap:6px;margin-bottom:18px}
-.tabs button{flex:1;padding:10px 2px;border:none;border-radius:10px;background:#f0f0f7;color:#667eea;font-size:12px;font-weight:600;cursor:pointer}
-.tabs button.on{background:#667eea;color:#fff}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:linear-gradient(135deg,#667eea,#764ba2);min-height:100vh;display:flex;justify-content:center;padding:24px 12px;color:#333}
+.app{background:white;border-radius:18px;width:100%;max-width:560px;padding:22px;box-shadow:0 10px 40px #0003}
+h1{font-size:23px;margin-bottom:4px}
+.sub{color:#888;font-size:13px;margin-bottom:16px}
+.tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.tabs button{flex:1;min-width:75px;padding:10px 5px;border:0;border-radius:10px;background:#f0f0f7;color:#667eea;font-size:12px;font-weight:700}
+.tabs button.on{background:#667eea;color:white}
 .hide{display:none!important}
-.inputs{display:flex;gap:8px;margin-bottom:10px}
-.inputs input{flex:1;padding:10px 12px;border:1.5px solid #ddd;border-radius:10px;font-size:15px;outline:none}
-.inputs input:focus{border-color:#667eea}
-button.add{width:100%;padding:12px;border:none;border-radius:10px;background:#667eea;color:#fff;font-size:15px;font-weight:600;cursor:pointer;margin-bottom:14px}
-.toolbar{display:flex;justify-content:space-between;gap:8px;margin-bottom:10px}
-.toolbar input{flex:1;padding:9px 12px;border:1.5px solid #ddd;border-radius:10px;font-size:14px;outline:none}
-.count{font-size:13px;color:#888;white-space:nowrap}
-li{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-radius:10px;background:#f7f7fb;margin-bottom:6px;font-size:15px;list-style:none}
-.w{font-weight:600;color:#333}.t{color:#667eea;font-weight:400}.a{color:#aaa;margin:0 6px;font-size:13px}
-.del{background:none;border:none;color:#ccc;font-size:18px;cursor:pointer}
-.del:hover{color:#e74c3c}
-.empty{text-align:center;color:#aaa;padding:30px 0;font-size:14px}
-.card{text-align:center;padding:14px 0}
+.inputs{display:flex;gap:8px;margin-bottom:9px}
+input,select,textarea{font:inherit}
+.inputs input,.toolbar input,.select,textarea{width:100%;padding:10px 12px;border:1.5px solid #ddd;border-radius:10px;font-size:14px;outline:none;background:white}
+input:focus,select:focus,textarea:focus{border-color:#667eea}
+.row{display:flex;gap:8px;margin-bottom:9px}
+.row>*{flex:1;min-width:0}
+.add,.big{width:100%;padding:12px;border:0;border-radius:10px;background:#667eea;color:white;font-size:15px;font-weight:700;margin-bottom:12px}
+.big{background:#764ba2}
+.toolbar{display:flex;gap:8px;align-items:center;margin:12px 0 10px}
+.toolbar input{flex:1}
+.count{font-size:12px;color:#888;white-space:nowrap}
+li.word{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 11px;border-radius:10px;background:#f7f7fb;margin-bottom:7px;list-style:none}
+.word-main{min-width:0;overflow-wrap:anywhere}
+.w{font-weight:700}
+.t{color:#667eea}
+.arrow{color:#aaa;margin:0 6px}
+.actions{display:flex;gap:5px;flex-shrink:0}
+.iconbtn{background:none;border:0;font-size:18px;color:#aaa;padding:3px}
+.fav{color:#e5a400!important}
+.meta{display:block;color:#999;font-size:11px;margin-top:3px}
+.empty{text-align:center;color:#aaa;padding:26px 0;font-size:14px}
+.wordday{background:linear-gradient(135deg,#f3f1ff,#f8f5ff);border:1px solid #e7e1ff;border-radius:13px;padding:13px 15px;margin:12px 0 15px}
+.wordday small{color:#8877c7;font-weight:700}
+.wordday strong{display:block;font-size:20px;margin:4px 0}
+.wordday span{color:#667eea}
+.card{text-align:center;padding:18px 0}
 .qn{color:#888;font-size:13px;margin-bottom:8px}
-.qw{font-size:34px;font-weight:700;color:#333;margin-bottom:16px}
-.card input{width:100%;padding:12px;border:1.5px solid #ddd;border-radius:10px;font-size:16px;text-align:center;outline:none;margin-bottom:12px}
-.card input:focus{border-color:#667eea}
-.card .ltr-in{text-align:left;font-size:14px}
-.big{width:100%;padding:13px;border:none;border-radius:10px;background:#764ba2;color:#fff;font-size:15px;font-weight:600;cursor:pointer;margin-bottom:10px}
-.ghost{width:100%;padding:11px;border:1.5px solid #ddd;border-radius:10px;background:#fff;color:#667eea;font-size:14px;font-weight:600;cursor:pointer}
-.fb{min-height:22px;margin-bottom:10px;font-size:15px;font-weight:600}
-.good{color:#2ecc71}.bad{color:#e74c3c}
-.sc{font-size:42px;font-weight:700;color:#667eea;margin:10px 0}
-.st{text-align:center;font-size:13px;color:#888;min-height:18px;margin-bottom:8px}
-label.fl{flex:1;padding:11px;border:1.5px solid #ddd;border-radius:10px;text-align:center;font-size:13px;font-weight:600;cursor:pointer}
-label.fl:hover{border-color:#667eea;color:#667eea}
-.bulk-ta{width:100%;height:180px;padding:12px;border:1.5px solid #ddd;border-radius:10px;font-size:15px;outline:none;resize:vertical;font-family:inherit;margin-bottom:10px}
-.bulk-ta:focus{border-color:#667eea}
-.hint{font-size:12px;color:#aaa;line-height:1.6;background:#f7f7fb;border-radius:10px;padding:10px 14px;margin-bottom:12px}
-.lbl{display:block;text-align:left;font-size:13px;color:#888;margin-bottom:6px}
+.qw{font-size:32px;font-weight:750;margin-bottom:15px;overflow-wrap:anywhere}
+.card input{width:100%;padding:12px;border:1.5px solid #ddd;border-radius:10px;font-size:16px;text-align:center;margin-bottom:12px}
+.fb{min-height:22px;margin-bottom:10px;font-size:14px;font-weight:700}
+.good{color:#20a36a}
+.bad{color:#e74c3c}
+.ghost{width:100%;padding:11px;border:1.5px solid #ddd;border-radius:10px;background:white;color:#667eea;font-size:14px;font-weight:700;margin-bottom:9px}
+.score{font-size:40px;font-weight:800;color:#667eea;margin:10px 0}
+.file{display:block;padding:12px;border:1.5px solid #ddd;border-radius:10px;text-align:center;font-size:13px;font-weight:700;color:#667eea}
+.small{font-size:12px;color:#999;line-height:1.5}
+.section-title{font-size:14px;font-weight:700;margin:13px 0 8px}
+.filters{display:flex;gap:7px;margin:8px 0}
+.filters>*{flex:1;min-width:0}
+.notice{padding:12px;border-radius:11px;background:#f7f7fb;color:#666;font-size:13px;line-height:1.5;margin:10px 0}
+.modal-back{position:fixed;inset:0;background:#0008;display:flex;align-items:center;justify-content:center;padding:18px;z-index:5}
+.modal{background:white;border-radius:16px;padding:22px;max-width:360px;width:100%;text-align:center;box-shadow:0 12px 40px #0004}
+.modal h3{font-size:21px;margin-bottom:10px}
+.modal p{line-height:1.5;margin-bottom:14px}
+@media(max-width:390px){
+.app{padding:16px}
+.tabs button{font-size:11px}
+.inputs{flex-direction:column}
+.qw{font-size:27px}
+}
 </style>
 </head>
 <body>
 <div class="app">
+
 <h1>📖 Söz dəftərim</h1>
-<p class="sub">İngilis sözlərini saxla və test et.</p>
+<p class="sub">İngilis sözlərini topla, təkrarla və yadda saxla.</p>
+
+<div id="wordDay" class="wordday"></div>
+
 <div class="tabs">
 <button class="on" id="tb1" onclick="tab(1)">📚 Sözlər</button>
 <button id="tb2" onclick="tab(2)">➕ Toplu</button>
 <button id="tb3" onclick="tab(3)">✍️ Test</button>
-<button id="tb4" onclick="tab(4)">🔄 Eksport</button>
+<button id="tb4" onclick="tab(4)">⭐ Favorilər</button>
+<button id="tb5" onclick="tab(5)">🔄 Fayl</button>
 </div>
 
-<div id="v1">
-<div class="inputs"><input id="en" placeholder="İngiliscə söz"><input id="az" placeholder="Azərbaycanca tərcümə"></div>
+<!-- SÖZLƏR -->
+<section id="v1">
+<div class="inputs">
+<input id="en" placeholder="İngiliscə söz" autocomplete="off">
+<input id="az" placeholder="Azərbaycanca tərcümə" autocomplete="off">
+</div>
+
+<div class="row">
+<select id="cat" class="select">
+<option>Ümumi</option>
+<option>Gündəlik</option>
+<option>Akademik</option>
+<option>Biznes</option>
+<option>Elm</option>
+<option>Digər</option>
+</select>
+
+<select id="level" class="select">
+<option>A1</option>
+<option selected>A2</option>
+<option>B1</option>
+<option>B2</option>
+<option>C1</option>
+<option>C2</option>
+</select>
+</div>
+
 <button class="add" onclick="add()">+ Əlavə et</button>
-<div class="toolbar"><input id="sr" placeholder="🔍 Axtar..." oninput="draw()"><span class="count" id="cn"></span></div>
+
+<div class="filters">
+<select id="filterCat" class="select" onchange="draw()">
+<option value="">Bütün kateqoriyalar</option>
+<option>Ümumi</option>
+<option>Gündəlik</option>
+<option>Akademik</option>
+<option>Biznes</option>
+<option>Elm</option>
+<option>Digər</option>
+</select>
+
+<select id="filterLevel" class="select" onchange="draw()">
+<option value="">Bütün səviyyələr</option>
+<option>A1</option>
+<option>A2</option>
+<option>B1</option>
+<option>B2</option>
+<option>C1</option>
+<option>C2</option>
+</select>
+</div>
+
+<div class="toolbar">
+<input id="sr" placeholder="🔍 Söz və ya tərcümə axtar..." oninput="draw()">
+<span class="count" id="cn"></span>
+</div>
+
 <ul id="ls"></ul>
 <div class="empty" id="em">Hələ heç bir söz əlavə etməmisən.</div>
+</section>
+
+<!-- TOPLU ƏLAVƏ -->
+<section id="v2" class="hide">
+<p class="section-title">Toplu söz əlavə et</p>
+<p class="small">Hər sətrə bir söz yaz. Format: English — Azərbaycan.</p>
+
+<textarea id="bulk" rows="8" placeholder="Genuine — səmimi&#10;Vigorous — güclü, enerjili&#10;Ancestry — əcdadlar"></textarea>
+
+<div class="row" style="margin-top:9px">
+<select id="bulkCat" class="select">
+<option>Ümumi</option>
+<option>Gündəlik</option>
+<option>Akademik</option>
+<option>Biznes</option>
+<option>Elm</option>
+<option>Digər</option>
+</select>
+
+<select id="bulkLevel" class="select">
+<option>A1</option>
+<option selected>A2</option>
+<option>B1</option>
+<option>B2</option>
+<option>C1</option>
+<option>C2</option>
+</select>
 </div>
 
-<div id="v2" class="hide">
-<div class="hint">Hər sətirə bir söz yaz, arada <b>-</b>, <b>:</b> və ya <b>=</b> işarəsi qoy. Excel-dən birbaşa yapışdıra bilərsən.<br>Məsələn:<br>apple - alma<br>banana - banan</div>
-<textarea class="bulk-ta" id="bulk" placeholder="apple - alma&#10;banana - banan&#10;book : kitab"></textarea>
-<button class="big" onclick="bulkAdd()">Hamısını əlavə et</button>
-<p class="st" id="bres"></p>
+<button class="add" onclick="bulkAdd()">Sözləri əlavə et</button>
+<p id="bulkStatus" class="small"></p>
+
+<div class="notice">Təkrar sözlər əlavə edilməyəcək. Təkrar və səhv formatlı sətirlər ayrıca sayılacaq.</div>
+</section>
+
+<!-- TEST -->
+<section id="v3" class="hide">
+
+<div id="testStart" class="card">
+<p class="section-title">Test parametrləri</p>
+
+<div class="row">
+<select id="testCat" class="select">
+<option value="">Bütün kateqoriyalar</option>
+<option>Ümumi</option>
+<option>Gündəlik</option>
+<option>Akademik</option>
+<option>Biznes</option>
+<option>Elm</option>
+<option>Digər</option>
+</select>
+
+<select id="testLevel" class="select">
+<option value="">Bütün səviyyələr</option>
+<option>A1</option>
+<option>A2</option>
+<option>B1</option>
+<option>B2</option>
+<option>C1</option>
+<option>C2</option>
+</select>
 </div>
 
-<div id="v3" class="hide">
-<div id="ts" class="card">
-<label class="lbl">Test hərfi (boş = bütün sözlər)</label>
-<input class="ltr-in" id="ltr" placeholder="məs: a və ya a,d və ya a-c" oninput="updInfo()">
-<p id="ti" style="color:#888;font-size:13px;margin:12px 0"></p>
+<div class="row">
+<select id="testMode" class="select">
+<option value="en">İngiliscə → Azərbaycanca</option>
+<option value="az">Azərbaycanca → İngiliscə</option>
+</select>
+
+<select id="testCount" class="select">
+<option value="10">10 sual</option>
+<option value="15" selected>15 sual</option>
+<option value="25">25 sual</option>
+<option value="all">Hamısı</option>
+</select>
+</div>
+
 <button class="big" onclick="start()">▶ Testə başla</button>
+<p id="testInfo" class="small"></p>
 </div>
-<div id="tr" class="card hide">
+
+<div id="testRun" class="card hide">
 <p class="qn" id="qn"></p>
 <p class="qw" id="qw"></p>
-<input id="an" placeholder="Tərcüməsini yaz...">
+<input id="an" placeholder="Tərcüməsini yaz..." autocomplete="off">
 <div class="fb" id="fb"></div>
 <button class="big" id="ck" onclick="check()">Yoxla</button>
 <button class="ghost hide" id="nx" onclick="next()">Növbəti →</button>
 </div>
-<div id="tf" class="card hide">
-<p style="color:#888">Test bitdi! Nəticən:</p>
-<p class="sc" id="sc"></p>
+
+<div id="testFinish" class="card hide">
+<p>Test bitdi! Nəticən:</p>
+<p class="score" id="sc"></p>
+<p id="scoreDetail" class="small"></p>
 <button class="big" onclick="start()">🔄 Yenidən başla</button>
 <button class="ghost" onclick="tab(1)">Sözlərə qayıt</button>
 </div>
+
+</section>
+
+<!-- FAVORİLƏR -->
+<section id="v4" class="hide">
+<p class="section-title">⭐ Favori sözlərin</p>
+<p class="small">Ulduza basaraq sözü favorilərə əlavə et və ya çıxar.</p>
+
+<div class="toolbar">
+<input id="favSearch" placeholder="Favorilərdə axtar..." oninput="drawFav()">
 </div>
 
-<div id="v4" class="hide">
-<p class="st" id="st"></p>
-<div style="display:flex;gap:8px;margin-bottom:10px">
-<label class="fl">⬇ Sözləri fayla çıxar<button onclick="exp()" style="display:none"></button></label>
-<label class="fl">⬆ Fayldan yüklə<input type="file" accept=".json" style="display:none" onchange="imp(event)"></label>
+<ul id="favList"></ul>
+<div id="favEmpty" class="empty">Hələ favori sözün yoxdur.</div>
+
+<div class="notice">
+<b>C1–C2 sözləri:</b> Sözlər bölməsində səviyyə filtrindən C1 və ya C2 seçərək çətin sözlərini görə bilərsən.
 </div>
-<p style="font-size:12px;color:#aaa;line-height:1.6;background:#f7f7fb;border-radius:10px;padding:10px 14px">Fayl ilə cihazlar arasında daşı: kompüterdə "çıxar", özünə göndər, telefonda "yüklə".</p>
+</section>
+
+<!-- FAYL -->
+<section id="v5" class="hide">
+<p class="section-title">Məlumatların ehtiyat nüsxəsi</p>
+
+<button class="add" onclick="exp()">⬇ Sözləri fayla çıxar</button>
+
+<label class="file">
+⬆ JSON faylından yüklə
+<input type="file" accept=".json,application/json" style="display:none" onchange="imp(event)">
+</label>
+
+<p id="fileStatus" class="small" style="margin-top:10px"></p>
+
+<div class="notice">
+Fayl bütün sözləri, kateqoriyaları, səviyyələri və favoriləri saxlayır. Köhnə versiyadan çıxardığın JSON faylları da yüklənə bilər. Məlumatlar bu brauzerin yaddaşında saxlanılır.
+</div>
+</section>
+
+</div>
+
+<!-- TƏKRAR XƏBƏRDARLIĞI -->
+<div id="duplicateModal" class="modal-back hide">
+<div class="modal">
+<h3>Yobana brot! 😂</h3>
+<p>
+Sözü əzbərləmək lazımdır, iki dəfə yazmaq yox.<br>
+<b>Sikdir əzbərlə!</b>
+</p>
+<button class="add" onclick="closeDuplicate()">Başa düşdüm 😅</button>
 </div>
 </div>
+
 <script>
 const KEY='sd-v1';
-let ws=JSON.parse(localStorage.getItem(KEY)||'[]');
+let ws=[];
+
+try{
+ const saved=JSON.parse(localStorage.getItem(KEY)||'[]');
+ ws=Array.isArray(saved)?saved:[];
+}catch(e){
+ ws=[];
+}
+
+ws=ws.map(w=>({
+ en:String(w.en||'').trim(),
+ az:String(w.az||'').trim(),
+ cat:w.cat||'Ümumi',
+ level:w.level||'A2',
+ fav:!!w.fav
+})).filter(w=>w.en&&w.az);
+
 const $=id=>document.getElementById(id);
-function save(){localStorage.setItem(KEY,JSON.stringify(ws))}
-function tab(n){[1,2,3,4].forEach(i=>{$('v'+i).classList.toggle('hide',i!==n);$('tb'+i).classList.toggle('on',i===n)});if(n===3)updInfo()}
-function add(){const e=$('en').value.trim(),a=$('az').value.trim();if(!e||!a)return;ws.push({en:e,az:a});sortW();save();draw();$('en').value='';$('az').value='';$('en').focus()}
-function sortW(){ws.sort((x,y)=>x.en.localeCompare(y.en,'en',{sensitivity:'base'}))}
+
+function save(){
+ localStorage.setItem(KEY,JSON.stringify(ws));
+}
+
+function norm(s){
+ return String(s||'').trim().toLowerCase().replace(/\s+/g,' ');
+}
+
+function sortWords(){
+ ws.sort((a,b)=>a.en.localeCompare(b.en,'en',{sensitivity:'base'}));
+}
+
+function tab(n){
+ [1,2,3,4,5].forEach(i=>{
+  $('v'+i).classList.toggle('hide',i!==n);
+  $('tb'+i).classList.toggle('on',i===n);
+ });
+
+ if(n===4)drawFav();
+ if(n===3)updateTestInfo();
+}
+
+function duplicate(word){
+ return ws.some(w=>norm(w.en)===norm(word));
+}
+
+// YENİ SÖZ
+function add(){
+ const e=$('en').value.trim();
+ const a=$('az').value.trim();
+
+ if(!e||!a)return;
+
+ if(duplicate(e)){
+  $('duplicateModal').classList.remove('hide');
+  return;
+ }
+
+ ws.push({
+  en:e,
+  az:a,
+  cat:$('cat').value,
+  level:$('level').value,
+  fav:false
+ });
+
+ sortWords();
+ save();
+ draw();
+
+ $('en').value='';
+ $('az').value='';
+ $('en').focus();
+
+ renderWordDay();
+}
+
+function closeDuplicate(){
+ $('duplicateModal').classList.add('hide');
+ $('en').select();
+}
+
+// SİLMƏ
+function del(i){
+ if(!confirm('Bu sözü silmək istəyirsən?'))return;
+
+ ws.splice(i,1);
+ save();
+ draw();
+ drawFav();
+ renderWordDay();
+}
+
+// FAVORİ
+function toggleFav(i){
+ ws[i].fav=!ws[i].fav;
+
+ save();
+ draw();
+ drawFav();
+ renderWordDay();
+}
+
+// HTML TƏHLÜKƏSİZLİYİ
+function esc(s){
+ const d=document.createElement('div');
+ d.textContent=s;
+ return d.innerHTML;
+}
+
+function wordHTML(w,i){
+ return `<li class="word">
+ <span class="word-main">
+ <span class="w">${esc(w.en)}</span>
+ <span class="arrow">→</span>
+ <span class="t">${esc(w.az)}</span>
+ <small class="meta">${esc(w.cat)} · ${esc(w.level)}</small>
+ </span>
+
+ <span class="actions">
+ <button class="iconbtn ${w.fav?'fav':''}" title="Favori" onclick="toggleFav(${i})">${w.fav?'★':'☆'}</button>
+ <button class="iconbtn" title="Sil" onclick="del(${i})">✕</button>
+ </span>
+ </li>`;
+}
+
+// SÖZ SİYAHISI
+function draw(){
+ const q=norm($('sr').value);
+ const cat=$('filterCat').value;
+ const lev=$('filterLevel').value;
+
+ const f=ws.filter(w=>
+  (!q||norm(w.en).includes(q)||norm(w.az).includes(q))&&
+  (!cat||w.cat===cat)&&
+  (!lev||w.level===lev)
+ );
+
+ $('cn').textContent=f.length+'/'+ws.length;
+ $('em').style.display=f.length?'none':'block';
+
+ $('ls').innerHTML=f.map(w=>
+  wordHTML(w,ws.indexOf(w))
+ ).join('');
+}
+
+// FAVORİ SİYAHISI
+function drawFav(){
+ const q=norm($('favSearch').value);
+
+ const f=ws.filter(w=>
+  w.fav&&
+  (!q||norm(w.en).includes(q)||norm(w.az).includes(q))
+ );
+
+ $('favList').innerHTML=f.map(w=>
+  wordHTML(w,ws.indexOf(w))
+ ).join('');
+
+ $('favEmpty').style.display=f.length?'none':'block';
+}
+
+// TOPLU SÖZ ƏLAVƏ ETMƏ
 function bulkAdd(){
-const lines=$('bulk').value.split('\n');const known=new Set(ws.map(w=>w.en.toLowerCase()));
-let added=0,skipped=0;
-lines.forEach(line=>{
-  line=line.trim();if(!line)return;
-  let parts;
-  if(line.includes('\t'))parts=line.split('\t');
-  else if(line.includes(' - '))parts=line.split(' - ');
-  else if(line.includes(':'))parts=line.split(':');
-  else if(line.includes('='))parts=line.split('=');
-  else if(line.includes('-'))parts=line.split('-');
-  else{skipped++;return}
-  const e=(parts[0]||'').trim(),t=(parts[1]||'').trim();
-  if(!e||!t){skipped++;return}
-  if(known.has(e.toLowerCase())){skipped++;return}
-  ws.push({en:e,az:t});known.add(e.toLowerCase());added++;
-});
-sortW();save();draw();
-$('bres').textContent=added+' söz əlavə olundu'+(skipped?', '+skipped+' sətir keçildi':'')+'.';
-}
-function del(i){ws.splice(i,1);save();draw()}
-function draw(){const q=$('sr').value.trim().toLowerCase();const f=ws.filter(w=>w.en.toLowerCase().includes(q)||w.az.toLowerCase().includes(q));$('cn').textContent=ws.length+' söz';$('em').style.display=ws.length?'none':'block';$('ls').innerHTML='';f.forEach(w=>{const i=ws.indexOf(w);const li=document.createElement('li');li.innerHTML=`<span class="w">${esc(w.en)}<span class="a">→</span><span class="t">${esc(w.az)}</span></span><button class="del" onclick="del(${i})">✕</button>`;$('ls').appendChild(li)})}
-function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
-function parseLetters(str){
-  str=str.trim().toLowerCase();if(!str)return null;
-  const set=new Set();
-  str.split(',').forEach(p=>{
-    p=p.trim();if(!p)return;
-    const m=p.match(/^([a-z])\s*-\s*([a-z])$/);
-    if(m){for(let c=m[1].charCodeAt(0);c<=m[2].charCodeAt(0);c++)set.add(String.fromCharCode(c))}
-    else if(/^[a-z]$/.test(p))set.add(p);
+ const lines=$('bulk').value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+
+ let added=0;
+ let dups=0;
+ let invalid=0;
+
+ for(const line of lines){
+  const m=line.match(/^(.+?)\s*(?:—|–|->|:|\||,)\s*(.+)$/);
+
+  if(!m){
+   invalid++;
+   continue;
+  }
+
+  const en=m[1].trim();
+  const az=m[2].trim();
+
+  if(!en||!az){
+   invalid++;
+   continue;
+  }
+
+  if(duplicate(en)){
+   dups++;
+   continue;
+  }
+
+  ws.push({
+   en,
+   az,
+   cat:$('bulkCat').value,
+   level:$('bulkLevel').value,
+   fav:false
   });
-  return set.size?set:null;
+
+  added++;
+ }
+
+ sortWords();
+ save();
+ draw();
+ renderWordDay();
+
+ $('bulkStatus').textContent=
+ `✅ ${added} söz əlavə edildi. ${dups} təkrar, ${invalid} uyğun olmayan sətir.`;
+
 }
-function filteredWords(){
-  const set=parseLetters($('ltr').value);
-  if(!set)return ws;
-  return ws.filter(w=>set.has(w.en.charAt(0).toLowerCase()));
+
+// TEST
+let quiz=[];
+let qi=0;
+let correct=0;
+let mode='en';
+
+function updateTestInfo(){
+ const f=ws.filter(w=>
+  (!$('testCat').value||w.cat===$('testCat').value)&&
+  (!$('testLevel').value||w.level===$('testLevel').value)
+ );
+
+ $('testInfo').textContent=`Seçilmiş şərtlərə uyğun ${f.length} söz var.`;
 }
-function updInfo(){
-  const pool=filteredWords();
-  $('ti').textContent=pool.length?pool.length+' sözdən 15-i ilə test':'Bu hərflə başlayan söz yoxdur';
-}
-let q=[],n=0,ok=0;
+
+['testCat','testLevel'].forEach(id=>{
+ $(id).addEventListener('change',updateTestInfo);
+});
+
 function start(){
-  const pool=filteredWords();
-  if(!pool.length){$('ti').textContent='Bu hərflə başlayan söz yoxdur — başqa hərf yoxla.';return}
-  q=pool.slice().sort(()=>Math.random()-.5).slice(0,Math.min(pool.length,15));n=0;ok=0;
-  $('ts').classList.add('hide');$('tf').classList.add('hide');$('tr').classList.remove('hide');show();
+ const pool=ws.filter(w=>
+  (!$('testCat').value||w.cat===$('testCat').value)&&
+  (!$('testLevel').value||w.level===$('testLevel').value)
+ );
+
+ if(!pool.length){
+  $('testInfo').textContent='Bu seçimdə test üçün söz yoxdur.';
+  return;
+ }
+
+ mode=$('testMode').value;
+
+ const count=$('testCount').value==='all'
+  ?pool.length
+  :Number($('testCount').value);
+
+ quiz=pool.slice().sort(()=>Math.random()-.5).slice(0,Math.min(pool.length,count));
+
+ qi=0;
+ correct=0;
+
+ $('testStart').classList.add('hide');
+ $('testFinish').classList.add('hide');
+ $('testRun').classList.remove('hide');
+
+ showQuestion();
 }
-function show(){const w=q[n];$('qn').textContent=`Sual ${n+1} / ${q.length}`;$('qw').textContent=w.en;const a=$('an');a.value='';a.disabled=false;a.focus();$('fb').textContent='';$('fb').className='fb';$('ck').classList.remove('hide');$('nx').classList.add('hide');$('nx').textContent
+
+function showQuestion(){
+ const w=quiz[qi];
+
+ $('qn').textContent=`Sual ${qi+1} / ${quiz.length}`;
+ $('qw').textContent=mode==='en'?w.en:w.az;
+
+ $('an').value='';
+ $('an').disabled=false;
+
+ $('fb').textContent='';
+ $('fb').className='fb';
+
+ $('ck').classList.remove('hide');
+ $('nx').classList.add('hide');
+
+ $('nx').textContent=
+  qi===quiz.length-1?'Nəticəni gör →':'Növbəti →';
+
+ $('an').focus();
+}
+
+function check(){
+ const w=quiz[qi];
+ const answer=$('an').value.trim();
+ const expected=mode==='en'?w.az:w.en;
+
+ $('an').disabled=true;
+
+ if(norm(answer)===norm(expected)){
+  correct++;
+  $('fb').textContent='✅ Düzdür!';
+  $('fb').className='fb good';
+ }else{
+  $('fb').textContent='❌ Düzgün cavab: '+expected;
+  $('fb').className='fb bad';
+ }
+
+ $('ck').classList.add('hide');
+ $('nx').classList.remove('hide');
+}
+
+function next(){
+ qi++;
+
+ if(qi>=quiz.length){
+  $('testRun').classList.add('hide');
+  $('testFinish').classList.remove('hide');
+
+  $('sc').textContent=correct+' / '+quiz.length;
+
+  $('scoreDetail').textContent=
+   `Düzgün cavab: ${Math.round(correct/quiz.length*100)}%`;
+ }else{
+  showQuestion();
+ }
+}
+
+// GÜNÜN SÖZÜ
+function renderWordDay(){
+ if(!ws.length){
+  $('wordDay').innerHTML=
+   '<small>GÜNÜN SÖZÜ</small><div>İlk sözünü əlavə et, günün sözü burada görünsün.</div>';
+  return;
+ }
+
+ const pool=ws.filter(w=>
+  w.fav&&(w.level==='C1'||w.level==='C2')
+ );
+
+ const candidates=pool.length?pool:ws;
+
+ const today=new Date();
+ const seed=today.getFullYear()*10000+
+  (today.getMonth()+1)*100+
+  today.getDate();
+
+ const w=candidates[seed%candidates.length];
+
+ $('wordDay').innerHTML=`
+ <small>✨ GÜNÜN SÖZÜ ${pool.length?'· FAVORİ C1–C2':''}</small>
+ <strong>${esc(w.en)}</strong>
+ <span>${esc(w.az)}</span>
+ <small class="meta">${esc(w.level)} · ${esc(w.cat)}</small>
+ `;
+}
+
+// EKSPORT
+function exp(){
+ const payload={
+  version:2,
+  words:ws
+ };
+
+ const blob=new Blob(
+  [JSON.stringify(payload,null,2)],
+  {type:'application/json'}
+ );
+
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement('a');
+
+ a.href=url;
+ a.download='soz-defterim.json';
+ a.click();
+
+ URL.revokeObjectURL(url);
+
+ $('fileStatus').textContent='✅ Ehtiyat nüsxəsi hazırlandı.';
+}
+
+// İMPORT
+function imp(e){
+ const file=e.target.files[0];
+ if(!file)return;
+
+ const reader=new FileReader();
+
+ reader.onload=()=>{
+  try{
+   const data=JSON.parse(reader.result);
+
+   const incoming=Array.isArray(data)
+    ?data
+    :(Array.isArray(data.words)?data.words:null);
+
+   if(!incoming)throw Error('format');
+
+   let added=0;
+   let dups=0;
+
+   incoming.forEach(w=>{
+    if(!w||!w.en||!w.az)return;
+
+    if(duplicate(w.en)){
+     dups++;
+     return;
+    }
+
+    ws.push({
+     en:String(w.en).trim(),
+     az:String(w.az).trim(),
+     cat:w.cat||'Ümumi',
+     level:w.level||'A2',
+     fav:!!w.fav
+    });
+
+    added++;
+   });
+
+   sortWords();
+   save();
+   draw();
+   drawFav();
+   renderWordDay();
+
+   $('fileStatus').textContent=
+    `✅ ${added} söz yükləndi. ${dups} təkrar söz ötürüldü.`;
+
+  }catch(err){
+   $('fileStatus').textContent='❌ Faylın formatı düzgün deyil.';
+  }
+ };
+
+ reader.readAsText(file);
+ e.target.value='';
+}
+
+// ENTER DÜYMƏSİ
+document.addEventListener('keydown',e=>{
+ if(e.key!=='Enter')return;
+
+ if(!$('duplicateModal').classList.contains('hide')){
+  closeDuplicate();
+  return;
+ }
+
+ if(!$('v3').classList.contains('hide')){
+  if(!$('testRun').classList.contains('hide')){
+   if(!$('ck').classList.contains('hide'))check();
+   else if(!$('nx').classList.contains('hide'))next();
+  }
+ }else if(!$('v1').classList.contains('hide')){
+  if(document.activeElement===$('en')||
+     document.activeElement===$('az')){
+   add();
+  }
+ }
+});
+
+// İLK AÇILIŞ
+sortWords();
+save();
+draw();
+drawFav();
+renderWordDay();
+updateTestInfo();
+
+</script>
+</body>
+</html>
