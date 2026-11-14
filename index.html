@@ -3,226 +3,109 @@
 <html lang="az">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#667eea">
+<meta name="description" content="İngilis sözlərini saxla, öyrən və özünü test et.">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
 <title>Söz dəftərim</title>
 <style>
+:root{--purple:#667eea;--deep:#764ba2;--ink:#292b38;--muted:#85889a;--line:#e6e7ef;--soft:#f6f6fb;--green:#169b62;--red:#d94b56}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI',system-ui,sans-serif;background:linear-gradient(135deg,#667eea,#764ba2);min-height:100vh;display:flex;justify-content:center;padding:24px 12px;color:#333}
-.app{background:white;border-radius:18px;width:100%;max-width:560px;padding:22px;box-shadow:0 10px 40px #0003}
-h1{font-size:23px;margin-bottom:4px}
-.sub{color:#888;font-size:13px;margin-bottom:16px}
-.tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
-.tabs button{flex:1;min-width:75px;padding:10px 5px;border:0;border-radius:10px;background:#f0f0f7;color:#667eea;font-size:12px;font-weight:700}
-.tabs button.on{background:#667eea;color:white}
+body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:linear-gradient(135deg,#667eea,#764ba2);min-height:100vh;display:flex;justify-content:center;padding:22px 12px;color:var(--ink)}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.app{background:#fff;border-radius:18px;width:100%;max-width:560px;padding:22px;box-shadow:0 10px 40px #0003;align-self:flex-start}
+header{margin-bottom:18px}
+h1{font-size:23px}
+.sub{color:var(--muted);font-size:13px;margin-top:4px}
+.tabs{display:flex;gap:6px;margin-bottom:18px}
+.tabs button{flex:1;padding:10px 5px;border:0;border-radius:10px;background:#f0f0f7;color:var(--purple);font-size:13px;font-weight:700}
+.tabs button.on{background:var(--purple);color:white}
 .hide{display:none!important}
-.inputs{display:flex;gap:8px;margin-bottom:9px}
-input,select,textarea{font:inherit}
-.inputs input,.toolbar input,.select,textarea{width:100%;padding:10px 12px;border:1.5px solid #ddd;border-radius:10px;font-size:14px;outline:none;background:white}
-input:focus,select:focus,textarea:focus{border-color:#667eea}
-.row{display:flex;gap:8px;margin-bottom:9px}
-.row>*{flex:1;min-width:0}
-.add,.big{width:100%;padding:12px;border:0;border-radius:10px;background:#667eea;color:white;font-size:15px;font-weight:700;margin-bottom:12px}
-.big{background:#764ba2}
-.toolbar{display:flex;gap:8px;align-items:center;margin:12px 0 10px}
-.toolbar input{flex:1}
-.count{font-size:12px;color:#888;white-space:nowrap}
-li.word{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 11px;border-radius:10px;background:#f7f7fb;margin-bottom:7px;list-style:none}
-.word-main{min-width:0;overflow-wrap:anywhere}
-.w{font-weight:700}
-.t{color:#667eea}
-.arrow{color:#aaa;margin:0 6px}
-.actions{display:flex;gap:5px;flex-shrink:0}
-.iconbtn{background:none;border:0;font-size:18px;color:#aaa;padding:3px}
-.fav{color:#e5a400!important}
-.meta{display:block;color:#999;font-size:11px;margin-top:3px}
-.empty{text-align:center;color:#aaa;padding:26px 0;font-size:14px}
-.wordday{background:linear-gradient(135deg,#f3f1ff,#f8f5ff);border:1px solid #e7e1ff;border-radius:13px;padding:13px 15px;margin:12px 0 15px}
-.wordday small{color:#8877c7;font-weight:700}
-.wordday strong{display:block;font-size:20px;margin:4px 0}
-.wordday span{color:#667eea}
-.card{text-align:center;padding:18px 0}
-.qn{color:#888;font-size:13px;margin-bottom:8px}
-.qw{font-size:32px;font-weight:750;margin-bottom:15px;overflow-wrap:anywhere}
-.card input{width:100%;padding:12px;border:1.5px solid #ddd;border-radius:10px;font-size:16px;text-align:center;margin-bottom:12px}
-.fb{min-height:22px;margin-bottom:10px;font-size:14px;font-weight:700}
-.good{color:#20a36a}
-.bad{color:#e74c3c}
-.ghost{width:100%;padding:11px;border:1.5px solid #ddd;border-radius:10px;background:white;color:#667eea;font-size:14px;font-weight:700;margin-bottom:9px}
-.score{font-size:40px;font-weight:800;color:#667eea;margin:10px 0}
-.file{display:block;padding:12px;border:1.5px solid #ddd;border-radius:10px;text-align:center;font-size:13px;font-weight:700;color:#667eea}
-.small{font-size:12px;color:#999;line-height:1.5}
-.section-title{font-size:14px;font-weight:700;margin:13px 0 8px}
-.filters{display:flex;gap:7px;margin:8px 0}
-.filters>*{flex:1;min-width:0}
-.notice{padding:12px;border-radius:11px;background:#f7f7fb;color:#666;font-size:13px;line-height:1.5;margin:10px 0}
-.modal-back{position:fixed;inset:0;background:#0008;display:flex;align-items:center;justify-content:center;padding:18px;z-index:5}
-.modal{background:white;border-radius:16px;padding:22px;max-width:360px;width:100%;text-align:center;box-shadow:0 12px 40px #0004}
-.modal h3{font-size:21px;margin-bottom:10px}
-.modal p{line-height:1.5;margin-bottom:14px}
-@media(max-width:390px){
-.app{padding:16px}
-.tabs button{font-size:11px}
-.inputs{flex-direction:column}
-.qw{font-size:27px}
-}
+.inputs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:9px}
+input,textarea,select{width:100%;padding:11px 12px;border:1.5px solid var(--line);border-radius:10px;outline:none;background:#fff;color:var(--ink)}
+input:focus,textarea:focus,select:focus{border-color:var(--purple);box-shadow:0 0 0 3px #667eea18}
+button.primary{width:100%;padding:12px;border:0;border-radius:10px;background:var(--purple);color:#fff;font-weight:700;margin-bottom:14px}
+.toolbar{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.toolbar input{flex:1;min-width:0}
+.count{font-size:12px;color:var(--muted);white-space:nowrap}
+ul{list-style:none}
+.word{display:flex;align-items:center;gap:8px;padding:11px 12px;border-radius:11px;background:var(--soft);margin-bottom:7px}
+.word-main{flex:1;min-width:0;cursor:pointer}
+.word-en{font-weight:750;color:#303241;overflow-wrap:anywhere}
+.word-az{color:var(--purple);font-size:14px;overflow-wrap:anywhere;margin-top:3px}
+.word-meta{font-size:11px;color:var(--muted);margin-top:4px}
+.word-actions{display:flex;gap:5px;flex-shrink:0}
+.icon-btn{border:0;background:transparent;color:#9a9bad;padding:5px 7px;border-radius:7px;font-size:17px}
+.icon-btn:hover{background:#ececf5;color:var(--purple)}
+.icon-btn.remove:hover{color:var(--red)}
+.empty{text-align:center;color:#a2a3b0;padding:28px 0;font-size:14px}
+.card{text-align:center;padding:20px 0}
+.qn{color:var(--muted);font-size:13px;margin-bottom:8px}
+.qw{font-size:34px;font-weight:800;margin-bottom:17px;overflow-wrap:anywhere}
+.card input{text-align:center;font-size:16px;margin-bottom:12px}
+.big{width:100%;padding:13px;border:0;border-radius:10px;background:var(--deep);color:#fff;font-weight:700;margin-bottom:10px}
+.ghost{width:100%;padding:11px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--purple);font-weight:700}
+.fb{min-height:23px;margin-bottom:10px;font-size:14px;font-weight:700}
+.good{color:var(--green)}.bad{color:var(--red)}
+.sc{font-size:42px;font-weight:800;color:var(--purple);margin:10px 0}
+.st{text-align:center;font-size:13px;color:var(--muted);min-height:20px;margin-bottom:9px}
+.file-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.file-label{padding:12px 8px;border:1.5px solid var(--line);border-radius:10px;text-align:center;font-size:13px;font-weight:700;color:var(--purple);cursor:pointer}
+.hint{font-size:12px;color:var(--muted);line-height:1.6;background:var(--soft);border-radius:10px;padding:11px 13px}
+.offline-status{font-size:11px;color:var(--muted);text-align:center;margin-top:12px}
+.offline-status strong{color:var(--green)}
+.modal-backdrop{position:fixed;inset:0;background:#17182799;display:flex;align-items:center;justify-content:center;padding:14px;z-index:10;overflow:auto}
+.modal{background:#fff;width:100%;max-width:520px;max-height:94vh;overflow:auto;border-radius:16px;padding:20px;box-shadow:0 15px 55px #0004}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.modal-head h2{font-size:19px}
+.close{border:0;background:var(--soft);border-radius:9px;padding:6px 10px;font-size:18px}
+.field{margin-bottom:11px}
+.field label{display:block;font-size:12px;font-weight:750;color:#66697a;margin:0 0 5px 2px}
+.field small{display:block;color:#999;font-size:11px;margin:4px 2px 0}
+textarea{min-height:68px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.modal-actions{display:flex;gap:8px;margin-top:14px}
+.modal-actions button{flex:1;margin:0}
+.notice{font-size:12px;color:#8b6a24;background:#fff8e8;padding:9px 11px;border-radius:9px;margin-bottom:12px;line-height:1.5}
+@media(max-width:420px){.app{padding:17px}.tabs button{font-size:12px;padding:10px 3px}.qw{font-size:30px}.inputs{grid-template-columns:1fr}.two{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="app">
-
+<header>
 <h1>📖 Söz dəftərim</h1>
-<p class="sub">İngilis sözlərini topla, təkrarla və yadda saxla.</p>
-
-<div id="wordDay" class="wordday"></div>
+<p class="sub">İngilis sözlərini saxla, öyrən və özünü test et.</p>
+</header>
 
 <div class="tabs">
 <button class="on" id="tb1" onclick="tab(1)">📚 Sözlər</button>
-<button id="tb2" onclick="tab(2)">➕ Toplu</button>
-<button id="tb3" onclick="tab(3)">✍️ Test</button>
-<button id="tb4" onclick="tab(4)">⭐ Favorilər</button>
-<button id="tb5" onclick="tab(5)">🔄 Fayl</button>
+<button id="tb2" onclick="tab(2)">✍️ Test</button>
+<button id="tb3" onclick="tab(3)">🔄 Fayl</button>
 </div>
 
-<!-- SÖZLƏR -->
 <section id="v1">
 <div class="inputs">
 <input id="en" placeholder="İngiliscə söz" autocomplete="off">
-<input id="az" placeholder="Azərbaycanca tərcümə" autocomplete="off">
+<input id="az" placeholder="Azərbaycanca məna" autocomplete="off">
 </div>
-
-<div class="row">
-<select id="cat" class="select">
-<option>Ümumi</option>
-<option>Gündəlik</option>
-<option>Akademik</option>
-<option>Biznes</option>
-<option>Elm</option>
-<option>Digər</option>
-</select>
-
-<select id="level" class="select">
-<option>A1</option>
-<option selected>A2</option>
-<option>B1</option>
-<option>B2</option>
-<option>C1</option>
-<option>C2</option>
-</select>
-</div>
-
-<button class="add" onclick="add()">+ Əlavə et</button>
-
-<div class="filters">
-<select id="filterCat" class="select" onchange="draw()">
-<option value="">Bütün kateqoriyalar</option>
-<option>Ümumi</option>
-<option>Gündəlik</option>
-<option>Akademik</option>
-<option>Biznes</option>
-<option>Elm</option>
-<option>Digər</option>
-</select>
-
-<select id="filterLevel" class="select" onchange="draw()">
-<option value="">Bütün səviyyələr</option>
-<option>A1</option>
-<option>A2</option>
-<option>B1</option>
-<option>B2</option>
-<option>C1</option>
-<option>C2</option>
-</select>
-</div>
-
+<button class="primary" onclick="add()">+ Əlavə et</button>
 <div class="toolbar">
-<input id="sr" placeholder="🔍 Söz və ya tərcümə axtar..." oninput="draw()">
+<input id="sr" placeholder="🔍 Söz və ya məna axtar..." oninput="draw()">
 <span class="count" id="cn"></span>
 </div>
-
 <ul id="ls"></ul>
 <div class="empty" id="em">Hələ heç bir söz əlavə etməmisən.</div>
 </section>
 
-<!-- TOPLU ƏLAVƏ -->
 <section id="v2" class="hide">
-<p class="section-title">Toplu söz əlavə et</p>
-<p class="small">Hər sətrə bir söz yaz. Format: English — Azərbaycan.</p>
-
-<textarea id="bulk" rows="8" placeholder="Genuine — səmimi&#10;Vigorous — güclü, enerjili&#10;Ancestry — əcdadlar"></textarea>
-
-<div class="row" style="margin-top:9px">
-<select id="bulkCat" class="select">
-<option>Ümumi</option>
-<option>Gündəlik</option>
-<option>Akademik</option>
-<option>Biznes</option>
-<option>Elm</option>
-<option>Digər</option>
-</select>
-
-<select id="bulkLevel" class="select">
-<option>A1</option>
-<option selected>A2</option>
-<option>B1</option>
-<option>B2</option>
-<option>C1</option>
-<option>C2</option>
-</select>
-</div>
-
-<button class="add" onclick="bulkAdd()">Sözləri əlavə et</button>
-<p id="bulkStatus" class="small"></p>
-
-<div class="notice">Təkrar sözlər əlavə edilməyəcək. Təkrar və səhv formatlı sətirlər ayrıca sayılacaq.</div>
-</section>
-
-<!-- TEST -->
-<section id="v3" class="hide">
-
-<div id="testStart" class="card">
-<p class="section-title">Test parametrləri</p>
-
-<div class="row">
-<select id="testCat" class="select">
-<option value="">Bütün kateqoriyalar</option>
-<option>Ümumi</option>
-<option>Gündəlik</option>
-<option>Akademik</option>
-<option>Biznes</option>
-<option>Elm</option>
-<option>Digər</option>
-</select>
-
-<select id="testLevel" class="select">
-<option value="">Bütün səviyyələr</option>
-<option>A1</option>
-<option>A2</option>
-<option>B1</option>
-<option>B2</option>
-<option>C1</option>
-<option>C2</option>
-</select>
-</div>
-
-<div class="row">
-<select id="testMode" class="select">
-<option value="en">İngiliscə → Azərbaycanca</option>
-<option value="az">Azərbaycanca → İngiliscə</option>
-</select>
-
-<select id="testCount" class="select">
-<option value="10">10 sual</option>
-<option value="15" selected>15 sual</option>
-<option value="25">25 sual</option>
-<option value="all">Hamısı</option>
-</select>
-</div>
-
+<div id="ts" class="card">
+<p id="ti" style="color:#85889a;font-size:14px;margin-bottom:14px"></p>
+<p class="hint" style="text-align:left;margin-bottom:14px">Testdə sözün mənalarından, sinonimlərindən və əlavə qəbul edilən cavablardan biri kifayətdir.</p>
 <button class="big" onclick="start()">▶ Testə başla</button>
-<p id="testInfo" class="small"></p>
 </div>
-
-<div id="testRun" class="card hide">
+<div id="tr" class="card hide">
 <p class="qn" id="qn"></p>
 <p class="qw" id="qw"></p>
 <input id="an" placeholder="Tərcüməsini yaz..." autocomplete="off">
@@ -230,524 +113,392 @@ li.word{display:flex;justify-content:space-between;align-items:center;gap:8px;pa
 <button class="big" id="ck" onclick="check()">Yoxla</button>
 <button class="ghost hide" id="nx" onclick="next()">Növbəti →</button>
 </div>
-
-<div id="testFinish" class="card hide">
-<p>Test bitdi! Nəticən:</p>
-<p class="score" id="sc"></p>
-<p id="scoreDetail" class="small"></p>
+<div id="tf" class="card hide">
+<p style="color:#85889a">Test bitdi! Nəticən:</p>
+<p class="sc" id="sc"></p>
 <button class="big" onclick="start()">🔄 Yenidən başla</button>
 <button class="ghost" onclick="tab(1)">Sözlərə qayıt</button>
 </div>
-
 </section>
 
-<!-- FAVORİLƏR -->
-<section id="v4" class="hide">
-<p class="section-title">⭐ Favori sözlərin</p>
-<p class="small">Ulduza basaraq sözü favorilərə əlavə et və ya çıxar.</p>
-
-<div class="toolbar">
-<input id="favSearch" placeholder="Favorilərdə axtar..." oninput="drawFav()">
+<section id="v3" class="hide">
+<p class="st" id="st"></p>
+<div class="file-actions">
+<button class="file-label" onclick="exp()">⬇ Sözləri fayla çıxar</button>
+<label class="file-label">⬆ Fayldan yüklə<input type="file" accept=".json,application/json" style="display:none" onchange="imp(event)"></label>
 </div>
-
-<ul id="favList"></ul>
-<div id="favEmpty" class="empty">Hələ favori sözün yoxdur.</div>
-
-<div class="notice">
-<b>C1–C2 sözləri:</b> Sözlər bölməsində səviyyə filtrindən C1 və ya C2 seçərək çətin sözlərini görə bilərsən.
-</div>
+<p class="hint">Ehtiyat nüsxə yaratmaq və sözləri başqa cihaza daşımaq üçün faylı ixrac et. Digər cihazda həmin JSON faylını idxal et.</p>
+<p class="hint" style="margin-top:9px">Offline istifadə üçün saytı internetlə ən azı bir dəfə aç və tam yüklənməsini gözlə. Sonra interneti söndürüb yenidən aça bilərsən.</p>
 </section>
 
-<!-- FAYL -->
-<section id="v5" class="hide">
-<p class="section-title">Məlumatların ehtiyat nüsxəsi</p>
-
-<button class="add" onclick="exp()">⬇ Sözləri fayla çıxar</button>
-
-<label class="file">
-⬆ JSON faylından yüklə
-<input type="file" accept=".json,application/json" style="display:none" onchange="imp(event)">
-</label>
-
-<p id="fileStatus" class="small" style="margin-top:10px"></p>
-
-<div class="notice">
-Fayl bütün sözləri, kateqoriyaları, səviyyələri və favoriləri saxlayır. Köhnə versiyadan çıxardığın JSON faylları da yüklənə bilər. Məlumatlar bu brauzerin yaddaşında saxlanılır.
-</div>
-</section>
-
+<p class="offline-status" id="offlineStatus">Yaddaş: bu cihazda saxlanılır</p>
 </div>
 
-<!-- TƏKRAR XƏBƏRDARLIĞI -->
-<div id="duplicateModal" class="modal-back hide">
+<div id="editor" class="modal-backdrop hide" role="dialog" aria-modal="true" aria-labelledby="editorTitle">
 <div class="modal">
-<h3>Yobana brot! 😂</h3>
-<p>
-Sözü əzbərləmək lazımdır, iki dəfə yazmaq yox.<br>
-<b>Sikdir əzbərlə!</b>
-</p>
-<button class="add" onclick="closeDuplicate()">Başa düşdüm 😅</button>
+<div class="modal-head">
+<h2 id="editorTitle">Sözü redaktə et</h2>
+<button class="close" onclick="closeEditor()">✕</button>
+</div>
+<div class="notice">Hər mənanı ayrıca sətirdə yaz. Test zamanı mənalardan, sinonimlərdən və qəbul edilən cavablardan biri düzgün sayılacaq.</div>
+<input type="hidden" id="editIndex">
+<div class="field"><label for="edEn">İngiliscə söz</label><input id="edEn"></div>
+<div class="field"><label for="edMeanings">Azərbaycanca mənalar</label><textarea id="edMeanings" placeholder="təhqir&#10;qərəz"></textarea></div>
+<div class="field"><label for="edSyn">Sinonimlər (hər sətirdə biri)</label><textarea id="edSyn"></textarea></div>
+<div class="field"><label for="edAnt">Antonimlər (hər sətirdə biri)</label><textarea id="edAnt"></textarea></div>
+<div class="field"><label for="edAccepted">Testdə əlavə qəbul edilən cavablar</label><textarea id="edAccepted" placeholder="icazə vermək"></textarea><small>Buraya tərcümənin başqa düzgün formalarını da yaza bilərsən.</small></div>
+<div class="two">
+<div class="field">
+<label for="edLevel">CEFR səviyyəsi</label>
+<select id="edLevel">
+<option value="">Seçilməyib</option>
+<option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option><option>Termin</option>
+</select>
+</div>
+<div class="field"><label for="edNote">Qeyd</label><input id="edNote" placeholder="Kontekst / izah"></div>
+</div>
+<div class="field"><label for="edExample">Nümunə cümlə</label><textarea id="edExample" placeholder="The rule is permitted."></textarea></div>
+<div class="modal-actions">
+<button class="ghost" onclick="closeEditor()">Ləğv et</button>
+<button class="primary" onclick="saveEditor()">Yadda saxla</button>
+</div>
 </div>
 </div>
 
 <script>
+'use strict';
 const KEY='sd-v1';
-let ws=[];
-
-try{
- const saved=JSON.parse(localStorage.getItem(KEY)||'[]');
- ws=Array.isArray(saved)?saved:[];
-}catch(e){
- ws=[];
-}
-
-ws=ws.map(w=>({
- en:String(w.en||'').trim(),
- az:String(w.az||'').trim(),
- cat:w.cat||'Ümumi',
- level:w.level||'A2',
- fav:!!w.fav
-})).filter(w=>w.en&&w.az);
-
 const $=id=>document.getElementById(id);
 
-function save(){
- localStorage.setItem(KEY,JSON.stringify(ws));
+function listify(value){
+if(Array.isArray(value))return value.map(x=>String(x).trim()).filter(Boolean);
+if(value===undefined||value===null||value==='')return [];
+return String(value).split(/\r?\n|;/).map(x=>x.trim()).filter(Boolean);
 }
 
-function norm(s){
- return String(s||'').trim().toLowerCase().replace(/\s+/g,' ');
+function normalizeWord(w){
+const meanings=listify(w.meanings&&w.meanings.length?w.meanings:w.az);
+const first=meanings[0]||(typeof w.az==='string'?w.az:'');
+return {
+en:String(w.en||'').trim(),
+az:first,
+meanings:meanings.length?meanings:[first].filter(Boolean),
+synonyms:listify(w.synonyms),
+antonyms:listify(w.antonyms),
+acceptedAnswers:listify(w.acceptedAnswers),
+level:String(w.level||''),
+note:String(w.note||''),
+example:String(w.example||'')
+};
+}
+
+function loadWords(){
+try{
+const raw=JSON.parse(localStorage.getItem(KEY)||'[]');
+return Array.isArray(raw)?raw.filter(w=>w&&w.en&&(w.az||w.meanings)).map(normalizeWord):[];
+}catch(e){return []}
+}
+
+let ws=loadWords();
+
+function save(){
+try{
+localStorage.setItem(KEY,JSON.stringify(ws));
+return true;
+}catch(e){
+alert('Yaddaş doludur və ya brauzer yaddaşa icazə vermir. Sözlərini JSON faylına ixrac et.');
+return false;
+}
+}
+
+function clean(s){
+return String(s||'').trim().toLocaleLowerCase('az')
+.replace(/[.,!?;:()[\]{}"'’‘`]/g,'')
+.replace(/\s+/g,' ');
 }
 
 function sortWords(){
- ws.sort((a,b)=>a.en.localeCompare(b.en,'en',{sensitivity:'base'}));
+ws.sort((a,b)=>a.en.localeCompare(b.en,'en',{sensitivity:'base'}));
 }
 
 function tab(n){
- [1,2,3,4,5].forEach(i=>{
-  $('v'+i).classList.toggle('hide',i!==n);
-  $('tb'+i).classList.toggle('on',i===n);
- });
-
- if(n===4)drawFav();
- if(n===3)updateTestInfo();
-}
-
-function duplicate(word){
- return ws.some(w=>norm(w.en)===norm(word));
-}
-
-// YENİ SÖZ
-function add(){
- const e=$('en').value.trim();
- const a=$('az').value.trim();
-
- if(!e||!a)return;
-
- if(duplicate(e)){
-  $('duplicateModal').classList.remove('hide');
-  return;
- }
-
- ws.push({
-  en:e,
-  az:a,
-  cat:$('cat').value,
-  level:$('level').value,
-  fav:false
- });
-
- sortWords();
- save();
- draw();
-
- $('en').value='';
- $('az').value='';
- $('en').focus();
-
- renderWordDay();
-}
-
-function closeDuplicate(){
- $('duplicateModal').classList.add('hide');
- $('en').select();
-}
-
-// SİLMƏ
-function del(i){
- if(!confirm('Bu sözü silmək istəyirsən?'))return;
-
- ws.splice(i,1);
- save();
- draw();
- drawFav();
- renderWordDay();
-}
-
-// FAVORİ
-function toggleFav(i){
- ws[i].fav=!ws[i].fav;
-
- save();
- draw();
- drawFav();
- renderWordDay();
-}
-
-// HTML TƏHLÜKƏSİZLİYİ
-function esc(s){
- const d=document.createElement('div');
- d.textContent=s;
- return d.innerHTML;
-}
-
-function wordHTML(w,i){
- return `<li class="word">
- <span class="word-main">
- <span class="w">${esc(w.en)}</span>
- <span class="arrow">→</span>
- <span class="t">${esc(w.az)}</span>
- <small class="meta">${esc(w.cat)} · ${esc(w.level)}</small>
- </span>
-
- <span class="actions">
- <button class="iconbtn ${w.fav?'fav':''}" title="Favori" onclick="toggleFav(${i})">${w.fav?'★':'☆'}</button>
- <button class="iconbtn" title="Sil" onclick="del(${i})">✕</button>
- </span>
- </li>`;
-}
-
-// SÖZ SİYAHISI
-function draw(){
- const q=norm($('sr').value);
- const cat=$('filterCat').value;
- const lev=$('filterLevel').value;
-
- const f=ws.filter(w=>
-  (!q||norm(w.en).includes(q)||norm(w.az).includes(q))&&
-  (!cat||w.cat===cat)&&
-  (!lev||w.level===lev)
- );
-
- $('cn').textContent=f.length+'/'+ws.length;
- $('em').style.display=f.length?'none':'block';
-
- $('ls').innerHTML=f.map(w=>
-  wordHTML(w,ws.indexOf(w))
- ).join('');
-}
-
-// FAVORİ SİYAHISI
-function drawFav(){
- const q=norm($('favSearch').value);
-
- const f=ws.filter(w=>
-  w.fav&&
-  (!q||norm(w.en).includes(q)||norm(w.az).includes(q))
- );
-
- $('favList').innerHTML=f.map(w=>
-  wordHTML(w,ws.indexOf(w))
- ).join('');
-
- $('favEmpty').style.display=f.length?'none':'block';
-}
-
-// TOPLU SÖZ ƏLAVƏ ETMƏ
-function bulkAdd(){
- const lines=$('bulk').value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
-
- let added=0;
- let dups=0;
- let invalid=0;
-
- for(const line of lines){
-  const m=line.match(/^(.+?)\s*(?:—|–|->|:|\||,)\s*(.+)$/);
-
-  if(!m){
-   invalid++;
-   continue;
-  }
-
-  const en=m[1].trim();
-  const az=m[2].trim();
-
-  if(!en||!az){
-   invalid++;
-   continue;
-  }
-
-  if(duplicate(en)){
-   dups++;
-   continue;
-  }
-
-  ws.push({
-   en,
-   az,
-   cat:$('bulkCat').value,
-   level:$('bulkLevel').value,
-   fav:false
-  });
-
-  added++;
- }
-
- sortWords();
- save();
- draw();
- renderWordDay();
-
- $('bulkStatus').textContent=
- `✅ ${added} söz əlavə edildi. ${dups} təkrar, ${invalid} uyğun olmayan sətir.`;
-
-}
-
-// TEST
-let quiz=[];
-let qi=0;
-let correct=0;
-let mode='en';
-
-function updateTestInfo(){
- const f=ws.filter(w=>
-  (!$('testCat').value||w.cat===$('testCat').value)&&
-  (!$('testLevel').value||w.level===$('testLevel').value)
- );
-
- $('testInfo').textContent=`Seçilmiş şərtlərə uyğun ${f.length} söz var.`;
-}
-
-['testCat','testLevel'].forEach(id=>{
- $(id).addEventListener('change',updateTestInfo);
+[1,2,3].forEach(i=>{
+$('v'+i).classList.toggle('hide',i!==n);
+$('tb'+i).classList.toggle('on',i===n);
 });
+if(n===2){
+$('ti').textContent=ws.length?`${ws.length} sözdən ${Math.min(ws.length,15)}-i ilə test`:'Hələ söz əlavə edilməyib.';
+$('ts').classList.remove('hide');
+$('tr').classList.add('hide');
+$('tf').classList.add('hide');
+}
+}
+
+function findWord(en){
+return ws.find(w=>clean(w.en)===clean(en));
+}
+
+function add(){
+const en=$('en').value.trim();
+const meaning=$('az').value.trim();
+if(!en||!meaning){alert('Həm ingiliscə sözü, həm də mənasını yaz.');return;}
+
+let w=findWord(en);
+if(w){
+if(w.meanings.some(m=>clean(m)===clean(meaning))){
+alert('Yobana brot! Sözü əzbərləmək lazımdır, iki dəfə yazmaq yox. Sikdir əzbərlə!');
+}else{
+w.meanings.push(meaning);
+w.az=w.meanings[0];
+save();draw();
+$('st').textContent=`“${en}” sözünə yeni məna əlavə edildi.`;
+}
+}else{
+ws.push(normalizeWord({en,az:meaning}));
+sortWords();save();draw();
+}
+$('en').value='';$('az').value='';$('en').focus();
+}
+
+function del(i){
+const w=ws[i];
+if(!w)return;
+if(confirm(`“${w.en}” sözünü və bütün məlumatlarını silmək istəyirsən?`)){
+ws.splice(i,1);save();draw();
+}
+}
+
+function draw(){
+const q=clean($('sr').value);
+const filtered=ws.filter(w=>
+clean(w.en).includes(q)||
+[...w.meanings,...w.synonyms,...w.antonyms].some(x=>clean(x).includes(q))
+);
+$('cn').textContent=ws.length+' söz';
+$('em').style.display=filtered.length?'none':'block';
+$('em').textContent=ws.length?'Axtarışa uyğun söz tapılmadı.':'Hələ heç bir söz əlavə etməmisən.';
+$('ls').innerHTML='';
+
+filtered.forEach(w=>{
+const i=ws.indexOf(w);
+const li=document.createElement('li');li.className='word';
+const main=document.createElement('div');main.className='word-main';
+main.setAttribute('role','button');main.setAttribute('tabindex','0');
+main.setAttribute('aria-label',w.en+' sözünü redaktə et');
+
+const en=document.createElement('div');en.className='word-en';en.textContent=w.en;
+const az=document.createElement('div');az.className='word-az';az.textContent=w.meanings.join(' • ');
+const meta=document.createElement('div');meta.className='word-meta';
+const bits=[];
+if(w.level)bits.push(w.level);
+if(w.synonyms.length)bits.push('Sinonim: '+w.synonyms.length);
+if(w.antonyms.length)bits.push('Antonim: '+w.antonyms.length);
+meta.textContent=bits.join(' · ');
+
+main.append(en,az,meta);
+main.onclick=()=>openEditor(i);
+main.onkeydown=e=>{
+if(e.key==='Enter'||e.key===' '){e.preventDefault();openEditor(i);}
+};
+
+const actions=document.createElement('div');actions.className='word-actions';
+const edit=document.createElement('button');
+edit.className='icon-btn';edit.title='Redaktə et';edit.textContent='✎';
+edit.onclick=()=>openEditor(i);
+const remove=document.createElement('button');
+remove.className='icon-btn remove';remove.title='Sil';remove.textContent='✕';
+remove.onclick=()=>del(i);
+actions.append(edit,remove);
+li.append(main,actions);
+$('ls').appendChild(li);
+});
+}
+
+function openEditor(i){
+const w=ws[i];if(!w)return;
+$('editIndex').value=i;
+$('edEn').value=w.en;
+$('edMeanings').value=w.meanings.join('\n');
+$('edSyn').value=w.synonyms.join('\n');
+$('edAnt').value=w.antonyms.join('\n');
+$('edAccepted').value=w.acceptedAnswers.join('\n');
+$('edLevel').value=w.level;
+$('edNote').value=w.note;
+$('edExample').value=w.example;
+$('editor').classList.remove('hide');
+$('edEn').focus();
+}
+
+function closeEditor(){
+$('editor').classList.add('hide');
+}
+
+function saveEditor(){
+const i=Number($('editIndex').value);
+const old=ws[i];if(!old)return;
+const en=$('edEn').value.trim();
+const meanings=listify($('edMeanings').value);
+if(!en||!meanings.length){
+alert('İngiliscə söz və ən azı bir məna mütləqdir.');
+return;
+}
+const duplicate=ws.findIndex((w,j)=>j!==i&&clean(w.en)===clean(en));
+if(duplicate!==-1){
+alert('Bu ingilis sözü artıq siyahıdadır. Mövcud sözün üzərindən redaktə et.');
+return;
+}
+ws[i]=normalizeWord({
+en,meanings,az:meanings[0],
+synonyms:listify($('edSyn').value),
+antonyms:listify($('edAnt').value),
+acceptedAnswers:listify($('edAccepted').value),
+level:$('edLevel').value,
+note:$('edNote').value.trim(),
+example:$('edExample').value.trim()
+});
+sortWords();save();draw();closeEditor();
+}
+
+let q=[],n=0,ok=0;
+
+function accepted(w){
+return [...w.meanings,...w.synonyms,...w.acceptedAnswers].map(clean).filter(Boolean);
+}
 
 function start(){
- const pool=ws.filter(w=>
-  (!$('testCat').value||w.cat===$('testCat').value)&&
-  (!$('testLevel').value||w.level===$('testLevel').value)
- );
-
- if(!pool.length){
-  $('testInfo').textContent='Bu seçimdə test üçün söz yoxdur.';
-  return;
- }
-
- mode=$('testMode').value;
-
- const count=$('testCount').value==='all'
-  ?pool.length
-  :Number($('testCount').value);
-
- quiz=pool.slice().sort(()=>Math.random()-.5).slice(0,Math.min(pool.length,count));
-
- qi=0;
- correct=0;
-
- $('testStart').classList.add('hide');
- $('testFinish').classList.add('hide');
- $('testRun').classList.remove('hide');
-
- showQuestion();
+if(!ws.length){tab(1);return;}
+q=ws.slice().sort(()=>Math.random()-.5).slice(0,Math.min(ws.length,15));
+n=0;ok=0;
+$('ts').classList.add('hide');
+$('tf').classList.add('hide');
+$('tr').classList.remove('hide');
+show();
 }
 
-function showQuestion(){
- const w=quiz[qi];
-
- $('qn').textContent=`Sual ${qi+1} / ${quiz.length}`;
- $('qw').textContent=mode==='en'?w.en:w.az;
-
- $('an').value='';
- $('an').disabled=false;
-
- $('fb').textContent='';
- $('fb').className='fb';
-
- $('ck').classList.remove('hide');
- $('nx').classList.add('hide');
-
- $('nx').textContent=
-  qi===quiz.length-1?'Nəticəni gör →':'Növbəti →';
-
- $('an').focus();
+function show(){
+const w=q[n];
+$('qn').textContent=`Sual ${n+1} / ${q.length}`;
+$('qw').textContent=w.en;
+const a=$('an');a.value='';a.disabled=false;
+$('fb').textContent='';$('fb').className='fb';
+$('ck').classList.remove('hide');
+$('nx').classList.add('hide');
+$('nx').textContent=n===q.length-1?'Nəticəni gör →':'Növbəti →';
+a.focus();
 }
 
 function check(){
- const w=quiz[qi];
- const answer=$('an').value.trim();
- const expected=mode==='en'?w.az:w.en;
-
- $('an').disabled=true;
-
- if(norm(answer)===norm(expected)){
-  correct++;
-  $('fb').textContent='✅ Düzdür!';
-  $('fb').className='fb good';
- }else{
-  $('fb').textContent='❌ Düzgün cavab: '+expected;
-  $('fb').className='fb bad';
- }
-
- $('ck').classList.add('hide');
- $('nx').classList.remove('hide');
+const w=q[n],a=$('an'),v=clean(a.value);
+if(!v)return;
+a.disabled=true;
+if(accepted(w).includes(v)){
+ok++;$('fb').textContent='✅ Düzdür!';
+$('fb').className='fb good';
+}else{
+$('fb').textContent='❌ Qəbul edilən cavab: '+[...w.meanings,...w.synonyms,...w.acceptedAnswers].join(' / ');
+$('fb').className='fb bad';
+}
+$('ck').classList.add('hide');
+$('nx').classList.remove('hide');
 }
 
 function next(){
- qi++;
-
- if(qi>=quiz.length){
-  $('testRun').classList.add('hide');
-  $('testFinish').classList.remove('hide');
-
-  $('sc').textContent=correct+' / '+quiz.length;
-
-  $('scoreDetail').textContent=
-   `Düzgün cavab: ${Math.round(correct/quiz.length*100)}%`;
- }else{
-  showQuestion();
- }
+n++;
+if(n>=q.length){
+$('tr').classList.add('hide');
+$('tf').classList.remove('hide');
+$('sc').textContent=ok+' / '+q.length;
+}else show();
 }
 
-// GÜNÜN SÖZÜ
-function renderWordDay(){
- if(!ws.length){
-  $('wordDay').innerHTML=
-   '<small>GÜNÜN SÖZÜ</small><div>İlk sözünü əlavə et, günün sözü burada görünsün.</div>';
-  return;
- }
-
- const pool=ws.filter(w=>
-  w.fav&&(w.level==='C1'||w.level==='C2')
- );
-
- const candidates=pool.length?pool:ws;
-
- const today=new Date();
- const seed=today.getFullYear()*10000+
-  (today.getMonth()+1)*100+
-  today.getDate();
-
- const w=candidates[seed%candidates.length];
-
- $('wordDay').innerHTML=`
- <small>✨ GÜNÜN SÖZÜ ${pool.length?'· FAVORİ C1–C2':''}</small>
- <strong>${esc(w.en)}</strong>
- <span>${esc(w.az)}</span>
- <small class="meta">${esc(w.level)} · ${esc(w.cat)}</small>
- `;
-}
-
-// EKSPORT
 function exp(){
- const payload={
-  version:2,
-  words:ws
- };
-
- const blob=new Blob(
-  [JSON.stringify(payload,null,2)],
-  {type:'application/json'}
- );
-
- const url=URL.createObjectURL(blob);
- const a=document.createElement('a');
-
- a.href=url;
- a.download='soz-defterim.json';
- a.click();
-
- URL.revokeObjectURL(url);
-
- $('fileStatus').textContent='✅ Ehtiyat nüsxəsi hazırlandı.';
+const blob=new Blob([JSON.stringify(ws,null,2)],{type:'application/json'});
+const url=URL.createObjectURL(blob);
+const a=document.createElement('a');
+a.href=url;a.download='sozlerim.json';
+document.body.appendChild(a);a.click();a.remove();
+URL.revokeObjectURL(url);
+$('st').textContent='✅ Ehtiyat nüsxəsi hazırdır.';
 }
 
-// İMPORT
+function mergeImported(incoming){
+let added=0,meaningsAdded=0;
+incoming.forEach(raw=>{
+if(!raw||!raw.en)return;
+const item=normalizeWord(raw);
+if(!item.en||!item.meanings.length)return;
+const existing=findWord(item.en);
+if(!existing){ws.push(item);added++;return;}
+
+item.meanings.forEach(m=>{
+if(!existing.meanings.some(x=>clean(x)===clean(m))){
+existing.meanings.push(m);meaningsAdded++;
+}
+});
+['synonyms','antonyms','acceptedAnswers'].forEach(k=>{
+item[k].forEach(x=>{
+if(!existing[k].some(y=>clean(y)===clean(x)))existing[k].push(x);
+});
+});
+if(item.level&&!existing.level)existing.level=item.level;
+if(item.note&&!existing.note)existing.note=item.note;
+if(item.example&&!existing.example)existing.example=item.example;
+existing.az=existing.meanings[0];
+});
+return {added,meaningsAdded};
+}
+
 function imp(e){
- const file=e.target.files[0];
- if(!file)return;
-
- const reader=new FileReader();
-
- reader.onload=()=>{
-  try{
-   const data=JSON.parse(reader.result);
-
-   const incoming=Array.isArray(data)
-    ?data
-    :(Array.isArray(data.words)?data.words:null);
-
-   if(!incoming)throw Error('format');
-
-   let added=0;
-   let dups=0;
-
-   incoming.forEach(w=>{
-    if(!w||!w.en||!w.az)return;
-
-    if(duplicate(w.en)){
-     dups++;
-     return;
-    }
-
-    ws.push({
-     en:String(w.en).trim(),
-     az:String(w.az).trim(),
-     cat:w.cat||'Ümumi',
-     level:w.level||'A2',
-     fav:!!w.fav
-    });
-
-    added++;
-   });
-
-   sortWords();
-   save();
-   draw();
-   drawFav();
-   renderWordDay();
-
-   $('fileStatus').textContent=
-    `✅ ${added} söz yükləndi. ${dups} təkrar söz ötürüldü.`;
-
-  }catch(err){
-   $('fileStatus').textContent='❌ Faylın formatı düzgün deyil.';
-  }
- };
-
- reader.readAsText(file);
- e.target.value='';
+const file=e.target.files[0];if(!file)return;
+const reader=new FileReader();
+reader.onload=()=>{
+try{
+const data=JSON.parse(reader.result);
+if(!Array.isArray(data))throw new Error('array');
+const result=mergeImported(data);
+sortWords();save();draw();
+$('st').textContent=`✅ ${result.added} yeni söz, ${result.meaningsAdded} yeni məna əlavə edildi.`;
+}catch(err){
+$('st').textContent='❌ Fayl düzgün JSON formatında deyil.';
+}
+};
+reader.readAsText(file);e.target.value='';
 }
 
-// ENTER DÜYMƏSİ
 document.addEventListener('keydown',e=>{
- if(e.key!=='Enter')return;
-
- if(!$('duplicateModal').classList.contains('hide')){
-  closeDuplicate();
-  return;
- }
-
- if(!$('v3').classList.contains('hide')){
-  if(!$('testRun').classList.contains('hide')){
-   if(!$('ck').classList.contains('hide'))check();
-   else if(!$('nx').classList.contains('hide'))next();
-  }
- }else if(!$('v1').classList.contains('hide')){
-  if(document.activeElement===$('en')||
-     document.activeElement===$('az')){
-   add();
-  }
- }
+if(e.key==='Escape'&&!$('editor').classList.contains('hide'))closeEditor();
+if(e.key!=='Enter')return;
+if(!$('editor').classList.contains('hide')){
+if(e.target.tagName!=='TEXTAREA')e.preventDefault();
+return;
+}
+if(!$('v2').classList.contains('hide')){
+if(!$('ck').classList.contains('hide'))check();
+else if(!$('nx').classList.contains('hide'))next();
+}else if(!$('v1').classList.contains('hide')&&(e.target.id==='en'||e.target.id==='az'))add();
 });
 
-// İLK AÇILIŞ
-sortWords();
-save();
-draw();
-drawFav();
-renderWordDay();
-updateTestInfo();
+$('editor').addEventListener('click',e=>{
+if(e.target===$('editor'))closeEditor();
+});
 
+function updateOnline(){
+$('offlineStatus').innerHTML=navigator.onLine?
+'Status: <strong>internetə qoşulub</strong> · Sözlər bu cihazda saxlanılır':
+'Status: <strong>offline rejim</strong> · Sözlər bu cihazda saxlanılır';
+}
+window.addEventListener('online',updateOnline);
+window.addEventListener('offline',updateOnline);
+
+draw();updateOnline();
+
+if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){
+window.addEventListener('load',()=>{
+navigator.serviceWorker.register('./sw.js')
+.then(()=>console.log('Offline dəstəyi aktivləşdirildi'))
+.catch(err=>console.warn('Service worker:',err));
+});
+}
 </script>
 </body>
 </html>
